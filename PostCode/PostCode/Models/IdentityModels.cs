@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -31,17 +28,22 @@ namespace PostCode.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+<<<<<<< HEAD
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostRaiting> PostRaitings { get;set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<PostTag> PostTags { get; set; } 
+=======
+
+>>>>>>> 78eb888... Revert "added model and initialize in context"
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
     }
+<<<<<<< HEAD
 
     public class Post
     {
@@ -93,4 +95,6 @@ namespace PostCode.Models
         public Int32 PostId { get; set; }
         public Int32 TagId { get;set; }
     }
+=======
+>>>>>>> 78eb888... Revert "added model and initialize in context"
 }
