@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -29,21 +32,31 @@ namespace PostCode.Models
         {
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 822f931... Revert "Revert "added model and initialize in context""
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostRaiting> PostRaitings { get;set; }
         public DbSet<Comment> Comments { get; set; }
+<<<<<<< HEAD
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<PostTag> PostTags { get; set; } 
 =======
 
 >>>>>>> 78eb888... Revert "added model and initialize in context"
+=======
+        public DbSet<CommentLike> CommentLikes { get; set; } 
+>>>>>>> 822f931... Revert "Revert "added model and initialize in context""
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 822f931... Revert "Revert "added model and initialize in context""
 
     public class Post
     {
@@ -87,6 +100,7 @@ namespace PostCode.Models
         public Int32 Id { get; set; }
         public String Name { get; set; }
     }
+<<<<<<< HEAD
 
     public class PostTag
     {
@@ -97,4 +111,6 @@ namespace PostCode.Models
     }
 =======
 >>>>>>> 78eb888... Revert "added model and initialize in context"
+=======
+>>>>>>> 822f931... Revert "Revert "added model and initialize in context""
 }
