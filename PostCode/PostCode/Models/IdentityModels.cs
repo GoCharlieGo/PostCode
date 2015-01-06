@@ -1,4 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -24,10 +27,57 @@ namespace PostCode.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostRaiting> PostRaitings { get;set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<CommentLike> CommentLikes { get; set; } 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+    }
+
+    public class Post
+    {
+        [Key]
+        public Int32 Id { get; set; }
+        public String Content { get; set; }
+        public String UserId { get; set; }
+        public String Name { get; set; }
+    }
+
+    public class PostRaiting
+    {
+        [Key]
+        public Int32 Id { get; set; }
+        public Int32 PostId { get; set; }
+        public String UserId { get; set; }
+        public Int32 Value { get; set; }
+    }
+
+    public class Comment
+    {
+        [Key]
+        public Int32 Id { get; set; }
+        public String Content { get; set; }
+        public String UserId { get; set; }
+        public Int32 PostId { get; set; }
+    }
+
+    public class CommentLike
+    {
+        [Key]
+        public Int32 Id { get; set; }
+        public Int32 CommentId { get; set; }
+        public String UserId { get; set; }
+        public Int32 Value { get; set; }
+    }
+
+    public class Tag
+    {
+        [Key]
+        public Int32 Id { get; set; }
+        public String Name { get; set; }
     }
 }
