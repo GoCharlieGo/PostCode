@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PostCode.Models;
 
 namespace PostCode.Controllers
 {
+    
+
     [Authorize]
     public class AccountController : Controller
     {
@@ -103,7 +106,14 @@ namespace PostCode.Controllers
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
-
+        private async Task AddUserToRoleAsync(ApplicationUser user, string role)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                var result = await userManager.AddToRoleAsync(user.Id, role);
+            }
+        }
         //
         // POST: /Account/VerifyCode
         [HttpPost]
@@ -155,6 +165,7 @@ namespace PostCode.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await AddUserToRoleAsync(user, "user");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
