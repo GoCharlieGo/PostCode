@@ -45,24 +45,19 @@ namespace PostCode
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseTwitterAuthentication(
+                consumerKey: "LsCGtpnw0QLVVBDP0XVI7QVUM",
+                consumerSecret: "uWFwMNSZWkxyyaLdJUfzKCDnjBeiIoFpvB5gprZCOlE7ukGtZt");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "312813918912086",
+               appSecret: "c9dc63bcf2138a6c8e6caa23dbc7755d");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseVkontakteAuthentication(
+                appId: "4668044",
+                appSecret: "xI67BTy9vTLyI6QGjCIx", scope: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication();
         }
     }
 }

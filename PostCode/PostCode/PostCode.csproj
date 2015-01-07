@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Duke.Owin.VkontakteMiddleware">
+      <HintPath>..\packages\Duke.Owin.VkontakteMiddleware.1.2.0.0\lib\net45\Duke.Owin.VkontakteMiddleware.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -168,6 +172,10 @@
     <Compile Include="Migrations\201501071452422_1.Designer.cs">
       <DependentUpon>201501071452422_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501071908499_2.cs" />
+    <Compile Include="Migrations\201501071908499_2.Designer.cs">
+      <DependentUpon>201501071908499_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -245,6 +253,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201501071452422_1.resx">
       <DependentUpon>201501071452422_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501071908499_2.resx">
+      <DependentUpon>201501071908499_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

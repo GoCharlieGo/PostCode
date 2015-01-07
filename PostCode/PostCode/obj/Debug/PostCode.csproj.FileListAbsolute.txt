@@ -55,3 +55,5 @@ D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.dll
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.pdb
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._1.resources
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csproj.GenerateResource.Cache
+D:\PostCode\PostCode\PostCode\PostCode\bin\Duke.Owin.VkontakteMiddleware.dll
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._2.resources
