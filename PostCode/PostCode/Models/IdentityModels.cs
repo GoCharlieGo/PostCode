@@ -40,6 +40,7 @@ namespace PostCode.Models
         public DbSet<PostRaiting> PostRaitings { get;set; }
         public DbSet<Comment> Comments { get; set; }
 <<<<<<< HEAD
+<<<<<<< HEAD
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<PostTag> PostTags { get; set; } 
 =======
@@ -48,6 +49,10 @@ namespace PostCode.Models
 =======
         public DbSet<CommentLike> CommentLikes { get; set; } 
 >>>>>>> 822f931... Revert "Revert "added model and initialize in context""
+=======
+        public DbSet<CommentLike> CommentLikes { get; set; }
+        public DbSet<PostTag> PostTags { get; set; } 
+>>>>>>> e60a9d7f60a07b76c6378f2b81af55850aafc6aa
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -101,6 +106,9 @@ namespace PostCode.Models
         public String Name { get; set; }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e60a9d7f60a07b76c6378f2b81af55850aafc6aa
 
     public class PostTag
     {
@@ -109,8 +117,11 @@ namespace PostCode.Models
         public Int32 PostId { get; set; }
         public Int32 TagId { get;set; }
     }
+<<<<<<< HEAD
 =======
 >>>>>>> 78eb888... Revert "added model and initialize in context"
 =======
 >>>>>>> 822f931... Revert "Revert "added model and initialize in context""
+=======
+>>>>>>> e60a9d7f60a07b76c6378f2b81af55850aafc6aa
 }
