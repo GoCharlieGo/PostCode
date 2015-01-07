@@ -14,21 +14,8 @@
         <div>
             @Html.TextBoxFor(m => m.Email)
         </div>
-    </div>
-    <div>
-        @Html.LabelFor(m => m.Password)
-        <div>
-            @Html.PasswordFor(m => m.Password)
-        </div>
-    </div>
-    <div>
-        @Html.LabelFor(m => m.ConfirmPassword)
-        <div>
-            @Html.PasswordFor(m => m.ConfirmPassword)
-        </div>
-    </div>
-
-    <div>
+ </div>
+    @*   <div>
         @Html.LabelFor(m => m.Age)
         <div>
             @Html.TextBoxFor(m => m.Age)
@@ -44,7 +31,21 @@
             @Html.RadioButtonFor(m => m.Gender, "мужской")
             <span>мужской</span>
         </div>
+    </div>*@
+        <div>
+        @Html.LabelFor(m => m.Password)
+        <div>
+            @Html.PasswordFor(m => m.Password)
+        </div>
     </div>
+    <div>
+        @Html.LabelFor(m => m.ConfirmPassword)
+        <div>
+            @Html.PasswordFor(m => m.ConfirmPassword)
+        </div>
+    </div>
+
+  
     <br />
     <div>
         <div>

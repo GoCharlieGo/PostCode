@@ -12,17 +12,19 @@ namespace PostCode.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        //public int Age { get; set; }
+        //public string Gender { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
+
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            userIdentity.AddClaim(new Claim(ClaimTypes.Gender, this.Gender));
-            userIdentity.AddClaim(new Claim("age", this.Age.ToString()));
+            //userIdentity.AddClaim(new Claim(ClaimTypes.Gender, this.Gender.ToString()));
+            //userIdentity.AddClaim(new Claim("age", this.Age.ToString()));
             // Add custom user claims here
             return userIdentity;
         }
-        public int Age { get; set; }
-        public string Gender { get; set; }
+        
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -36,10 +38,13 @@ namespace PostCode.Models
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostRaiting> PostRaitings { get;set; }
         public DbSet<Comment> Comments { get; set; }
+
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<PostTag> PostTags { get; set; } 
 
+
  
+
 
 
         public static ApplicationDbContext Create()
@@ -47,6 +52,7 @@ namespace PostCode.Models
             return new ApplicationDbContext();
         }
     }
+
 
     public class Post
     {
