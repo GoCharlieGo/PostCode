@@ -31,12 +31,17 @@ namespace PostCode.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostRaiting> PostRaitings { get;set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<PostTag> PostTags { get; set; } 
+
+ 
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -93,4 +98,5 @@ namespace PostCode.Models
         public Int32 PostId { get; set; }
         public Int32 TagId { get;set; }
     }
+
 }
