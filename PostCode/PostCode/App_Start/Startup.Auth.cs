@@ -53,9 +53,9 @@ namespace PostCode
                appId: "312813918912086",
                appSecret: "c9dc63bcf2138a6c8e6caa23dbc7755d");
 
-            app.UseVkontakteAuthentication(
-                appId: "4668044",
-                appSecret: "xI67BTy9vTLyI6QGjCIx", scope: "");
+            //app.UseVkontakteAuthentication(
+            //    appId: "4668044",
+            //    appSecret: "xI67BTy9vTLyI6QGjCIx", scope: "");
 
             app.UseGoogleAuthentication();
         }
