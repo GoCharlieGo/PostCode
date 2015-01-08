@@ -46,8 +46,13 @@ namespace PostCode
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             app.UseTwitterAuthentication(
+<<<<<<< HEAD
                consumerKey: "LsCGtpnw0QLVVBDP0XVI7QVUM",
                consumerSecret: "uWFwMNSZWkxyyaLdJUfzKCDnjBeiIoFpvB5gprZCOlE7ukGtZt");
+=======
+                consumerKey: "LsCGtpnw0QLVVBDP0XVI7QVUM",
+                consumerSecret: "uWFwMNSZWkxyyaLdJUfzKCDnjBeiIoFpvB5gprZCOlE7ukGtZt");
+>>>>>>> fc6d213241ad152f38f6b0c6849bc5ce984d0435
 
             app.UseFacebookAuthentication(
                appId: "312813918912086",
