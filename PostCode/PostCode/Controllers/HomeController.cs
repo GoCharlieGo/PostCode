@@ -8,7 +8,7 @@ namespace PostCode.Controllers
         {
             return View();
         }
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

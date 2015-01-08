@@ -41,16 +41,12 @@ namespace PostCode.Models
 
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<PostTag> PostTags { get; set; } 
-
-
- 
-
-
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<PostCode.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 
 
