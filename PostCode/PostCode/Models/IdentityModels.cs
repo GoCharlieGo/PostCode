@@ -41,6 +41,8 @@ namespace PostCode.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<PostCode.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
     public class Post
     {

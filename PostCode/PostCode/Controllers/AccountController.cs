@@ -24,7 +24,14 @@ namespace PostCode.Controllers
         public AccountController()
         {
         }
-
+        private async Task AddUserToRoleAsync(ApplicationUser user, string role)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                var result = await userManager.AddToRoleAsync(user.Id, role);
+            }
+        }
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
@@ -105,14 +112,6 @@ namespace PostCode.Controllers
                 return View("Error");
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
-        }
-        private async Task AddUserToRoleAsync(ApplicationUser user, string role)
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-                var result = await userManager.AddToRoleAsync(user.Id, role);
-            }
         }
         //
         // POST: /Account/VerifyCode
