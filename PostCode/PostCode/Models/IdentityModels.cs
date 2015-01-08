@@ -16,13 +16,13 @@ namespace PostCode.Models
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            userIdentity.AddClaim(new Claim(ClaimTypes.Gender, this.Gender));
-            userIdentity.AddClaim(new Claim("age", this.Age.ToString()));
+            //userIdentity.AddClaim(new Claim(ClaimTypes.Gender, this.Gender));
+            //userIdentity.AddClaim(new Claim("age", this.Age.ToString()));
             // Add custom user claims here
             return userIdentity;
         }
-        public int Age { get; set; }
-        public string Gender { get; set; }
+        //public int Age { get; set; }
+        //public string Gender { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
