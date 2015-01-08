@@ -59,7 +59,6 @@ D:\PostCode\PostCode\PostCode\PostCode\bin\Duke.Owin.VkontakteMiddleware.dll
 <<<<<<< Updated upstream
 =======
 <<<<<<< HEAD
-=======
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._2.resources
 >>>>>>> fc6d213241ad152f38f6b0c6849bc5ce984d0435
 >>>>>>> Stashed changes
