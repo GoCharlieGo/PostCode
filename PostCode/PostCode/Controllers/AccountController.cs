@@ -170,7 +170,7 @@ namespace PostCode.Controllers
                 {
                     await AddUserToRoleAsync(user, "user");
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
-                    return View("ConfirmEmail");
+                    return View("DisplayEmail");
                 }
                 AddErrors(result);
             }
