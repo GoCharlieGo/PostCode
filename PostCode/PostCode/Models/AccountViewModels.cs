@@ -72,18 +72,11 @@ namespace PostCode.Models
         //[Required]
         //[Display(Name = "Age")]
         //public int Age { get; set; }
-<<<<<<< HEAD
-
-        //[Required]
-        //[Display(Name = "Gender")]
-        //public string Gender { get; set; }
-=======
 
         //[Required]
         //[Display(Name = "Gender")]
         //public string Gender { get; set; }
 
->>>>>>> 80d0757... Auth
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.")]
         [DataType(DataType.Password)]
