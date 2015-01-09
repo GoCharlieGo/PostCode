@@ -47,12 +47,17 @@ namespace PostCode
 
             app.UseTwitterAuthentication(
 <<<<<<< HEAD
+<<<<<<< HEAD
                consumerKey: "LsCGtpnw0QLVVBDP0XVI7QVUM",
                consumerSecret: "uWFwMNSZWkxyyaLdJUfzKCDnjBeiIoFpvB5gprZCOlE7ukGtZt");
 =======
                 consumerKey: "LsCGtpnw0QLVVBDP0XVI7QVUM",
                 consumerSecret: "uWFwMNSZWkxyyaLdJUfzKCDnjBeiIoFpvB5gprZCOlE7ukGtZt");
 >>>>>>> fc6d213241ad152f38f6b0c6849bc5ce984d0435
+=======
+               consumerKey: "LsCGtpnw0QLVVBDP0XVI7QVUM",
+               consumerSecret: "uWFwMNSZWkxyyaLdJUfzKCDnjBeiIoFpvB5gprZCOlE7ukGtZt");
+>>>>>>> 80d0757... Auth
 
             app.UseFacebookAuthentication(
                appId: "312813918912086",

@@ -40,6 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Reference Include="Duke.Owin.VkontakteMiddleware, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Duke.Owin.VkontakteMiddleware.1.2.0.0\lib\net45\Duke.Owin.VkontakteMiddleware.dll</HintPath>
@@ -48,6 +49,10 @@
       <HintPath>..\packages\Duke.Owin.VkontakteMiddleware.1.2.0.0\lib\net45\Duke.Owin.VkontakteMiddleware.dll</HintPath>
       <Private>True</Private>
 >>>>>>> fc6d213241ad152f38f6b0c6849bc5ce984d0435
+=======
+    <Reference Include="Duke.Owin.VkontakteMiddleware">
+      <HintPath>..\packages\Duke.Owin.VkontakteMiddleware.1.2.0.0\lib\net45\Duke.Owin.VkontakteMiddleware.dll</HintPath>
+>>>>>>> 80d0757... Auth
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
