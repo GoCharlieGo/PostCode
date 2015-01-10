@@ -14,7 +14,7 @@ namespace PostCode
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<ApplicationDbContext>(new InitilizeRoleModel());
+            //Database.SetInitializer<ApplicationDbContext>(new InitilizeRoleModel());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
