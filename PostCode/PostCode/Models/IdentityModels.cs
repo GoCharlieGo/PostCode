@@ -33,21 +33,23 @@ namespace PostCode.Models
         }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<PostRaiting> PostRaitings { get;set; }
+        public DbSet<PostRaiting> PostRaitings { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<CommentLike> CommentLikes { get; set; }
-        public DbSet<PostTag> PostTags { get; set; } 
+        public DbSet<PostTag> PostTags { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
     }
+
     public class Post
     {
         [Key]
         public Int32 Id { get; set; }
         public String Content { get; set; }
         public String UserId { get; set; }
+        public DateTime Data { get; set; }
         public String Name { get; set; }
     }
 
@@ -65,6 +67,7 @@ namespace PostCode.Models
         [Key]
         public Int32 Id { get; set; }
         public String Content { get; set; }
+        public DateTime Data { get; set; }
         public String UserId { get; set; }
         public Int32 PostId { get; set; }
     }
@@ -87,8 +90,8 @@ namespace PostCode.Models
     public class PostTag
     {
         [Key]
-        public Int32 Id { get; set; }
+        public String Id { get; set; }
         public Int32 PostId { get; set; }
-        public Int32 TagId { get;set; }
+        public Int32 TagId { get; set; }
     }
 }
