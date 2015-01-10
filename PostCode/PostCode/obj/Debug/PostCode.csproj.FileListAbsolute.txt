@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csprojResolveAssemblyReference.cache
+>>>>>>> d1f061507cac16a6a0df7323670a0cde9d45b338
 D:\PostCode\PostCode\PostCode\PostCode\bin\PostCode.dll.config
 D:\PostCode\PostCode\PostCode\PostCode\bin\PostCode.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\PostCode.pdb
@@ -51,8 +55,15 @@ D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.OAuth.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.Google.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.Twitter.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+<<<<<<< HEAD
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._3.resources
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csproj.GenerateResource.Cache
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.dll
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.pdb
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csprojResolveAssemblyReference.cache
+=======
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.dll
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.pdb
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csproj.GenerateResource.Cache
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._3.resources
+>>>>>>> d1f061507cac16a6a0df7323670a0cde9d45b338
