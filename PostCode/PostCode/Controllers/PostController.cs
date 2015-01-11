@@ -24,6 +24,7 @@ namespace PostCode.Controllers
         public ViewResult Post(Post model)
         {
             model.UserId = User.Identity.GetUserId();
+            model.Data = DateTime.Now;
             _bdContext.Posts.Add(model);
             _bdContext.SaveChanges();
             return View(model);
