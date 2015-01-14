@@ -166,9 +166,9 @@ namespace PostCode.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                //await AddUserToRoleAsync(user, "user");
+            {               
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                await AddUserToRoleAsync(user, "user");
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
