@@ -168,8 +168,8 @@ namespace PostCode.Controllers
             if (ModelState.IsValid)
             {               
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                await AddUserToRoleAsync(user, "user");
                 var result = await UserManager.CreateAsync(user, model.Password);
+                await AddUserToRoleAsync(user, "user");
                 if (result.Succeeded)
                 {
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
@@ -198,6 +198,7 @@ namespace PostCode.Controllers
                 return View("Error");
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
+            //await AddUserToRoleAsync(user, "user");
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
