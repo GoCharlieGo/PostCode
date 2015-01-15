@@ -52,10 +52,14 @@ namespace PostCode.Models
         public Int32 Id { get; set; }
         public String Content { get; set; }
 
+        public String Code { get; set; }
+
         public DateTime Data { get; set; }
+
         public String Name { get; set; }
         [Display(Name = "ApplicationUser")]
         public String UserId { get; set; }
+        
         [ForeignKey("UserId")]
         public ApplicationUser ApplicationUser { get; set; }
 

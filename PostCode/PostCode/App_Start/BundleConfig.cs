@@ -23,11 +23,13 @@ namespace PostCode
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/bootstrap-markdown.js",
                       "~/Scripts/markdown.js",                      
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/highlight.pack.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-markdown.min.css",
+                      "~/Content/default.css",
                       "~/Content/site.css"));
         }
     }

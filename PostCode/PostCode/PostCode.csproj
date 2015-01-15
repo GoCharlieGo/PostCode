@@ -164,13 +164,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201501141625281_1.cs" />
     <Compile Include="Migrations\201501141625281_1.Designer.cs">
       <DependentUpon>201501141625281_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501151634277_2.cs" />
+    <Compile Include="Migrations\201501151634277_2.Designer.cs">
+      <DependentUpon>201501151634277_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -199,6 +203,8 @@
     <Content Include="Content\bootstrap-markdown\locale\bootstrap-markdown.ua.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\default.css" />
+    <Content Include="Scripts\highlight.pack.js" />
     <Content Include="Scripts\markdown.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -256,7 +262,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
-    <Content Include="Views\Post\Post.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -271,6 +281,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201501141625281_1.resx">
       <DependentUpon>201501141625281_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501151634277_2.resx">
+      <DependentUpon>201501151634277_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
