@@ -20,7 +20,7 @@ namespace PostCode.Controllers
         // GET: Posts
         public async Task<ActionResult> Index()
         {
-            var posts = db.Posts.Include(p => p.ApplicationUser);
+            var posts = db.Posts.Include(p => p.User);
             return View(await posts.ToListAsync());
         }
 

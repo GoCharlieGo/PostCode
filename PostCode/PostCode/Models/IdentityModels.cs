@@ -23,10 +23,6 @@ namespace PostCode.Models
             // Add custom user claims here
             return userIdentity;
         }
-        public IEnumerable<Post> Posts { get; set; }
-        public IEnumerable<Comment> Comments { get; set; }
-        public IEnumerable<CommentLike> CommentLikes { get; set; }
-        public IEnumerable<PostRaiting> PostRaitings { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -46,101 +42,109 @@ namespace PostCode.Models
             return new ApplicationDbContext();
         }
     }
-    public sealed class Post 
+    public class User : IEntity
+    {
+        public String Id { get; set; }
+        public String Email { get; set; }
+        public String UserName { get; set; }
+        public Boolean LockoutEnabled { get; set; }
+        public IEnumerable<Post> Posts { get; set; }
+        public IEnumerable<Comment> Comments { get; set; }
+        public IEnumerable<CommentLike> CommentLikes { get; set; }
+        public IEnumerable<PostRaiting> PostRaitings { get; set; }
+    }
+    public sealed class Post : IEntity
     {
         [Key]
-        public Int32 Id { get; set; }
+        public String Id { get; set; }
         public String Content { get; set; }
-
         public String Code { get; set; }
 
         public DateTime Data { get; set; }
-
         public String Name { get; set; }
-        [Display(Name = "ApplicationUser")]
+        [Display(Name = "User")]
         public String UserId { get; set; }
-        
         [ForeignKey("UserId")]
-        public ApplicationUser ApplicationUser { get; set; }
+        public User User { get; set; }
 
         public IEnumerable<PostRaiting> PostRaitings { get; set; }
         public IEnumerable<Comment> Comments { get; set; }
     }
-    public class PostRaiting
+    public class PostRaiting : IEntity
     {
         [Key]
-        public Int32 Id { get; set; }
+        public String Id { get; set; }
         public Int32 Value { get; set; }
 
         [Display(Name = "Post")]
-        public Int32 PostId { get; set; }
+        public String PostId { get; set; }
         [ForeignKey("PostId")]
         public virtual Post Post { get; set; }
 
-        [Display(Name = "ApplicationUser")]
+        [Display(Name = "User")]
         public String UserId { get; set; }
         [ForeignKey("UserId")]
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual User User { get; set; }
     }
-    public class Comment 
+    public class Comment : IEntity
     {
         [Key]
-        public Int32 Id { get; set; }
+        public String Id { get; set; }
         public String Content { get; set; }
         public DateTime Data { get; set; }
 
 
         [Display(Name = "Post")]
-        public Int32 PostId { get; set; }
+        public String PostId { get; set; }
         [ForeignKey("PostId")]
         public virtual Post Post { get; set; }
 
 
-        [Display(Name = "ApplicationUser")]
+        [Display(Name = "User")]
         public String UserId { get; set; }
         [ForeignKey("UserId")]
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual User User { get; set; }
 
         public virtual IEnumerable<CommentLike> CommentLikes { get; set; }
     }
 
-    public class CommentLike 
+    public class CommentLike : IEntity
     {
         [Key]
-        public Int32 Id { get; set; }
+        public String Id { get; set; }
         public Int32 Value { get; set; }
 
         [Display(Name = "Comment")]
-        public Int32 CommentId { get; set; }
+        public String CommentId { get; set; }
         [ForeignKey("CommentId")]
         public virtual Comment Comment { get; set; }
 
-        [Display(Name = "ApplicationUser")]
+        [Display(Name = "User")]
         public String UserId { get; set; }
         [ForeignKey("UserId")]
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual User User { get; set; }
     }
 
-    public class Tag 
+    public class Tag : IEntity
     {
         [Key]
-        public Int32 Id { get; set; }
+        public String Id { get; set; }
         public String Name { get; set; }
 
         public virtual IEnumerable<PostTag> PostTags { get; set; }
     }
-    public class PostTag
+    public class PostTag : IEntity
     {
         [Key]
-        public Int32 Id { get; set; }
+        public String Id { get; set; }
 
         [Display(Name = "Post")]
-        public Int32 PostId { get; set; }
+        public String PostId { get; set; }
         [ForeignKey("PostId")]
         public virtual Post Post { get; set; }
 
         [Display(Name = "Tag")]
-        public Int32 TagId { get; set; }
+        public String TagId { get; set; }
         [ForeignKey("TagId")]
         public virtual Tag Tag { get; set; }
     }

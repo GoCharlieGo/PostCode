@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PostCode.Repository
 {
-    public interface IEntity<T>
+    public interface IEntity
     {
-        T Id { get; set; }
+        String Id { get; set; }
     }
 }
