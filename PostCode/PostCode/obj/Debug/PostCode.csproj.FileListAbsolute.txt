@@ -1,4 +1,3 @@
-D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csprojResolveAssemblyReference.cache
 D:\PostCode\PostCode\PostCode\PostCode\bin\PostCode.dll.config
 D:\PostCode\PostCode\PostCode\PostCode\bin\PostCode.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\PostCode.pdb
@@ -20,6 +19,7 @@ D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.OAuth.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.Twitter.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Web.Infrastructure.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\Newtonsoft.Json.dll
+D:\PostCode\PostCode\PostCode\PostCode\bin\Ninject.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\Owin.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\System.Web.Helpers.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\System.Web.Mvc.dll
@@ -29,6 +29,7 @@ D:\PostCode\PostCode\PostCode\PostCode\bin\System.Web.WebPages.Deployment.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\System.Web.WebPages.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\System.Web.WebPages.Razor.dll
 D:\PostCode\PostCode\PostCode\PostCode\bin\WebGrease.dll
+D:\PostCode\PostCode\PostCode\PostCode\bin\Ninject.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\System.Web.Helpers.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\System.Web.Mvc.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\System.Web.Optimization.xml
@@ -52,8 +53,7 @@ D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.OAuth.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.Google.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.Twitter.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._2.resources
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csproj.GenerateResource.Cache
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.dll
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.pdb
-D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._1.resources
-D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csproj.GenerateResource.Cache
-D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._2.resources

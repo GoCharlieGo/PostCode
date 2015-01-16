@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using PostCode.Models;
+using PostCode.Repository;
 
 namespace PostCode.Controllers
 {
@@ -16,12 +17,26 @@ namespace PostCode.Controllers
     {
 
         private ApplicationDbContext db = new ApplicationDbContext();
+        private IPostRepository _postRepository;
+        public PostsController(IPostRepository postRepository)
+        {
+            _postRepository = postRepository;
+        }
 
         // GET: Posts
         public async Task<ActionResult> Index()
         {
-            var posts = db.Posts.Include(p => p.User);
-            return View(await posts.ToListAsync());
+            var posts =  _postRepository.GetAll().Select(post=>new Post()
+            {
+               User = post.User,
+               Code = post.Code,
+               Content = post.Content,
+               Data = post.Data,
+               Name = post.Name
+
+
+            });
+            return View(posts);
         }
 
         // GET: Posts/Details

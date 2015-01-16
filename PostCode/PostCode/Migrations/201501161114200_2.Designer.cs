@@ -13,7 +13,7 @@ namespace PostCode.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201501151634277_2"; }
+            get { return "201501161114200_2"; }
         }
         
         string IMigrationMetadata.Source
