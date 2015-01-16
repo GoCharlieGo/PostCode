@@ -6,51 +6,52 @@
 }
 
 <div>
-    <h2>Post</h2>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
-        </dt>
-        <dd>
-            @ViewBag.ShowEmail
-        </dd>
+    <h2>@Html.DisplayFor(model => model.Name)</h2>
+    <hr/>
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Content, htmlAttributes: new {@class = "control-label col-md-1"})
+            <div class="col-md-10">
+                <textarea name="Content" id="Content" style="max-width: 100%">@Html.DisplayFor(model => model.Content)</textarea>
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new {@class = "control-label col-md-1"})
+            <div class="col-md-10">
+               <pre><code>@Html.DisplayFor(model => model.Code)</code></pre> 
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Code)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-    </dl>
+        <div class="form-group">
+            <div class="col-md-10" style="padding-left: 80%; width: 100%">
+                @Html.DisplayFor(model => model.Data)
+            </div>
+        </div>
+        <hr/>
+        <a href='@Url.Action("Edit", "Posts", new { id = Model.Id })'>
+            <input type='button' value='Edit' class="btn btn-default" />
+        </a>
+        <a href='@Url.Action("Index", "Posts", new { id = Model.Id })'>
+            <input type='button' value='Back to List' class="btn btn-default" />
+        </a>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('pre code').each(function (i, e) {
+                hljs.highlightBlock(e);
+            });
+        });
+        $(document).ready(function() {
+            $("#Content").markdown({
+                autofocus: false,
+                hiddenButtons: "",
+                initialstate: "preview",
+                fullscreen: false
+            }).initialstate = "preview";
+            $(".md-editor").attr("class", "");
+        });
+    </script>
+}
