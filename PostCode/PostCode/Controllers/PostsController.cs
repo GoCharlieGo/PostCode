@@ -16,27 +16,16 @@ namespace PostCode.Controllers
     public class PostsController : Controller
     {
 
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private IPostRepository _postRepository;
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
+        private readonly IPostRepository _postRepository;
         public PostsController(IPostRepository postRepository)
         {
             _postRepository = postRepository;
         }
-
         // GET: Posts
         public async Task<ActionResult> Index()
         {
-            var posts =  _postRepository.GetAll().Select(post=>new Post()
-            {
-               User = post.User,
-               Code = post.Code,
-               Content = post.Content,
-               Data = post.Data,
-               Name = post.Name
-
-
-            });
-            return View(posts);
+            return View(_postRepository.GetAll());
         }
 
         // GET: Posts/Details

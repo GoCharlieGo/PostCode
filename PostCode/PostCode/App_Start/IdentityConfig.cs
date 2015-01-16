@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -25,7 +22,7 @@ namespace PostCode
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
             client.EnableSsl = true;
-            client.Credentials = new System.Net.NetworkCredential(from, pass);
+            client.Credentials = new NetworkCredential(from, pass);
             var mail = new MailMessage(from, message.Destination);
             mail.Subject = message.Subject;
             mail.Body = message.Body;

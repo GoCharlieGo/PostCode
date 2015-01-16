@@ -1,7 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using PostCode;
 
-[assembly: OwinStartupAttribute(typeof(PostCode.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 namespace PostCode
 {
     public partial class Startup

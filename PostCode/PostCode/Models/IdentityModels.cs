@@ -41,6 +41,8 @@ namespace PostCode.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<PostCode.Models.User> Users1 { get; set; }
     }
     public class User : IEntity
     {
@@ -108,7 +110,7 @@ namespace PostCode.Models
         public virtual IEnumerable<CommentLike> CommentLikes { get; set; }
     }
 
-    public class CommentLike : IEntity
+    public class CommentLike :IEntity
     {
         [Key]
         public String Id { get; set; }
