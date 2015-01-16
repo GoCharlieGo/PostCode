@@ -8,10 +8,8 @@ using PostCode.Models;
 
 namespace PostCode.Controllers
 {
-    [ValidateInput(false)]
     public class PostsController : Controller
     {
-
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
@@ -33,6 +31,8 @@ namespace PostCode.Controllers
             {
                 return HttpNotFound();
             }
+            var user = db.Users.Find(post.UserId);
+            ViewBag.ShowEmail = user.Email;
             return View(post);
         }
         [Authorize]
@@ -45,7 +45,7 @@ namespace PostCode.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        //[ValidateInput(false)]
+        [ValidateInput(false)]
         public async Task<ActionResult> Create([Bind(Include = "Id,Content,Code,Data,Name,UserId")] Post post)
         {
             if (ModelState.IsValid)
@@ -77,6 +77,7 @@ namespace PostCode.Controllers
         // POST: Posts/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Content,Code,Data,Name,UserId")] Post post)
         {
             if (ModelState.IsValid)
@@ -101,6 +102,8 @@ namespace PostCode.Controllers
             {
                 return HttpNotFound();
             }
+            var user = db.Users.Find(post.UserId);
+            ViewBag.ShowEmail = user.Email;
             return View(post);
         }
 
