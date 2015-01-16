@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -28,11 +31,14 @@ namespace PostCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = await db.Posts.FindAsync(id);
+            var post = await db.Posts.FindAsync(id);
+            
             if (post == null)
             {
                 return HttpNotFound();
             }
+            var user = db.Users.Find(post.UserId);
+            ViewBag.Email = user.Email;
             return View(post);
         }
         [Authorize]
