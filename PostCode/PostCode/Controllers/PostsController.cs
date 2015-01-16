@@ -107,6 +107,8 @@ namespace PostCode.Controllers
             {
                 return HttpNotFound();
             }
+            var user = db.Users.Find(post.UserId);
+            ViewBag.Email = user.Email;
             return View(post);
         }
 
