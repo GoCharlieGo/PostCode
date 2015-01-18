@@ -7,19 +7,28 @@
 
 <div>
     <h2>@Html.DisplayFor(model => model.Name)</h2>
+    <div class="col-md-3 col-lg-offset-9">
+        <a href='@Url.Action("Edit", "Posts", new { id = Model.Id })'>
+            <input type='button' value='Edit' class="btn btn-default" />
+        </a>
+        <a href='@Url.Action("Delete", "Posts", new { id = Model.Id })'>
+            <input type='button' value='Delete' class="btn btn-default" />
+        </a>
+    </div>
     <hr />
     <div class="form-horizontal">
         <div class="form-group">
-            <div class="col-md-1">
-                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-1" })</div>
-            <div class="col-md-10">
+            <div class="col-md-1" style="padding-top: 1%">
+                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-1" })
+            </div>
+            <div class="col-md-10" style="padding-top: 1%">
                 <textarea name="Content" id="Content" style="max-width: 100%;">@Html.DisplayFor(model => model.Content)</textarea>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-1" style="padding-top: 3%">
-                @Html.LabelFor(model => model.Code, htmlAttributes: new {@class = "control-label col-md-1"})
+                @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-1" })
             </div>
             <div class="col-md-10" style="padding-top: 3%">
                 <pre><code>@Html.DisplayFor(model => model.Code)</code></pre>
@@ -27,24 +36,36 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-10" style="padding-left: 75%; width: 100%; padding-bottom: 5px">
+            <div class="col-md-10" style="padding-left: 74%; width: 100%; padding-bottom: 5px">
                 Created by @Html.DisplayFor(model => model.User.Email)
             </div>
-            <div class="col-md-10" style="padding-left: 80%; width: 100%">
+            <div class="col-md-10" style="padding-left: 78%; width: 100%">
                 @Html.DisplayFor(model => model.Data)
             </div>
         </div>
-        <hr />
-        <a href='@Url.Action("Index", "Posts", new { id = Model.Id })'>
-            <input type='button' value='Back to List' class="btn btn-default" />
-        </a>
-        <a href='@Url.Action("Delete", "Posts", new { id = Model.Id })'>
-            <input type='button' value='Delete' class="btn btn-default" />
-        </a>
-        <a href='@Url.Action("Edit", "Posts", new { id = Model.Id })'>
-            <input type='button' value='Edit' class="btn btn-default" />
-        </a>
-    </div>
+
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Commented by </div>
+                    <div class="panel-body">Comment Text</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-1">
+                <textarea style="max-width: 100%; width: 100%; resize: none; border-color: #dddddd; border-radius: 4px; padding: 15px" wrap="soft" rows="5">Comment</textarea>
+            </div>
+        </div>
+            <a style="padding-left: 83%" href='@Url.Action("Index", "Comments", new {id = Model.Id})'>
+                <input type='button' value='Comment' class="btn btn-default" />
+            </a>
+            <hr />
+            <a href='@Url.Action("Index", "Posts", new {id = Model.Id})'>
+                <input type='button' value='Back to List' class="btn btn-default" />
+            </a>
+        </div>
 </div>
 @section scripts{
     <script type="text/javascript">

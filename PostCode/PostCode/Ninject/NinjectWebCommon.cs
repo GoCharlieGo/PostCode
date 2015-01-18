@@ -69,6 +69,7 @@ namespace PostCode.App_Start
             kernel.Bind<DbContext>().To<ApplicationDbContext>().InSingletonScope();
             kernel.Bind<IPostRepository>().To<PostRepository>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<ICommentRepository>().To<CommentRepository>();
         }        
     }
 }

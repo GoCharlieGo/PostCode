@@ -17,10 +17,12 @@ namespace PostCode.Controllers
     {
         private readonly IPostRepository _postRepository;
         private readonly IUserRepository _userRepository;
+        //private readonly ICommentRepository _commentRepository;
         public PostsController(IPostRepository postRepository, IUserRepository userRepository)
         {
             _postRepository = postRepository;
             _userRepository = userRepository;
+            //_commentRepository = commentRepository;
         }
         // GET: Posts
         public async Task<ActionResult> Index()
@@ -52,6 +54,7 @@ namespace PostCode.Controllers
             }
             return View(post);
         }
+
         [Authorize]
         // GET: Posts/Create
         public ActionResult Create()
