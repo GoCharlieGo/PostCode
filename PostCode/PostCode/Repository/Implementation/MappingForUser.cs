@@ -5,28 +5,24 @@ namespace PostCode.Repository
     public class MappingForUser : IMapper<User, ApplicationUser>
     {
 
-        public ApplicationUser MappingToDefU(User entity)
+        public User GetForAppUser(ApplicationUser entity)
         {
             if (entity == null)
-            {
-                return null;
-            }
-            return new ApplicationUser()
+                return null;//throw new ArgumentNullException("dalEntity");
+            return new User()
             {
                 Id = entity.Id,
-                Email = entity.Email,
-                LockoutEnabled = entity.LockoutEnabled,
-                UserName = entity.UserName
+               Email = entity.Email,
+               LockoutEnabled = entity.LockoutEnabled,
+               UserName = entity.UserName
             };
         }
 
-        public User MappingFromDefU(ApplicationUser entity)
+        public ApplicationUser GetForUser(User entity)
         {
             if (entity == null)
-            {
-                return null;
-            }
-            return new User()
+                return null;//throw new ArgumentNullException("bllEntity");
+            return new ApplicationUser ()
             {
                 Id = entity.Id,
                 Email = entity.Email,

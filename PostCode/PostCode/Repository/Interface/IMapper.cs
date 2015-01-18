@@ -4,7 +4,7 @@
         where Def : class
         where My : class
     {
-        My MappingToDefU(Def entity);
-        Def MappingFromDefU(My entity);
+        Def GetForAppUser(My entity);
+        My GetForUser(Def entity);
     }
 }

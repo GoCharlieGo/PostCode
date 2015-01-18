@@ -20,7 +20,7 @@ namespace PostCode.Repository
 
         Post IPostRepository.GetById(string Id)
         {
-            return _entities.Set<Post>().Include(x => x.User).Where(x => x.Id == Id).FirstOrDefault();
+            return _entities.Set<Post>().Include(x => x.User).FirstOrDefault(x => x.Id == Id);
         }
     }
 }

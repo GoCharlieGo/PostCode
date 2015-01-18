@@ -37,33 +37,38 @@ namespace PostCode.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<PostTag> PostTags { get; set; }
+        public DbSet<PostCode.Models.User> Users { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<PostCode.Models.User> Users1 { get; set; }
+        
     }
     public class User : IEntity
     {
+        [Key]
         public String Id { get; set; }
         public String Email { get; set; }
         public String UserName { get; set; }
         public Boolean LockoutEnabled { get; set; }
+
+
         public IEnumerable<Post> Posts { get; set; }
         public IEnumerable<Comment> Comments { get; set; }
         public IEnumerable<CommentLike> CommentLikes { get; set; }
         public IEnumerable<PostRaiting> PostRaitings { get; set; }
     }
-    public sealed class Post : IEntity
+    public  class Post : IEntity
     {
         [Key]
         public String Id { get; set; }
         public String Content { get; set; }
         public String Code { get; set; }
-
         public DateTime Data { get; set; }
         public String Name { get; set; }
+
+
         [Display(Name = "User")]
         public String UserId { get; set; }
         [ForeignKey("UserId")]

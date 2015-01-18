@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
 using Ninject;
 using Ninject.Web.Common;
 using PostCode.Models;
@@ -67,6 +68,7 @@ namespace PostCode.App_Start
         {
             kernel.Bind<DbContext>().To<ApplicationDbContext>().InSingletonScope();
             kernel.Bind<IPostRepository>().To<PostRepository>();
+            kernel.Bind<IUserRepository>().To<UserRepository>();
         }        
     }
 }
