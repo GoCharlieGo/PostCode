@@ -95,6 +95,7 @@ namespace PostCode.Controllers
         // POST: Posts/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Content,Code,Data, Name, UserId")] Post post)
         {
             if (ModelState.IsValid)
@@ -136,10 +137,10 @@ namespace PostCode.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                _postRepository.Dispose();
-            }
+            //if (disposing)
+            //{
+            //    _postRepository.Dispose();
+            //}
         }
     }
 }
