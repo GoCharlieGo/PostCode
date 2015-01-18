@@ -24,16 +24,22 @@
         </div>
 
         <div class="form-group">
+            <div class="col-md-10" style="padding-left: 75%; width: 100%; padding-bottom: 5px">
+                Created by @ViewBag.ShowEmail
+            </div>
             <div class="col-md-10" style="padding-left: 80%; width: 100%">
                 @Html.DisplayFor(model => model.Data)
             </div>
         </div>
         <hr/>
-        <a href='@Url.Action("Edit", "Posts", new { id = Model.Id })'>
-            <input type='button' value='Edit' class="btn btn-default" />
-        </a>
         <a href='@Url.Action("Index", "Posts", new { id = Model.Id })'>
             <input type='button' value='Back to List' class="btn btn-default" />
+        </a>
+        <a href='@Url.Action("Delete", "Posts", new { id = Model.Id })'>
+            <input type='button' value='Delete' class="btn btn-default" />
+        </a>
+        <a href='@Url.Action("Edit", "Posts", new { id = Model.Id })'>
+            <input type='button' value='Edit' class="btn btn-default" />
         </a>
     </div>
 </div>

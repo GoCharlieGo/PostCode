@@ -45,7 +45,6 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<a href='@Url.Action("Index", "Posts")'>
+    <input type='button' value='Back to List' class="btn btn-default" />
+</a>
