@@ -56,12 +56,12 @@
 
         <div class="form-group">
             <div class="col-md-10 col-md-offset-1">
-                <textarea id="Comment"style="max-width: 100%; width: 100%; resize: none; border-color: #dddddd; border-radius: 4px; padding: 15px" wrap="soft" rows="5"></textarea>
+                <textarea id="sendComment" style="max-width: 100%; width: 100%; resize: none; border-color: #dddddd; border-radius: 4px; padding: 15px" wrap="soft" rows="5">Comment</textarea>
             </div>
         </div>
-        <div style="padding-left: 83%">
-            <input id="CommentBtn" type='button' value='Comment' class="btn btn-default" />
-        </div>
+            <div style="padding-left: 80%">
+                <input id="CommentBtn" type='button' value='Comment' class="btn btn-default" />
+            </div>
             <hr />
             <a href='@Url.Action("Index", "Posts", new {id = Model.Id})'>
                 <input type='button' value='Back to List' class="btn btn-default" />
@@ -87,10 +87,9 @@
         });
 
         var getPostId = document.getElementById("PostId").innerHTML;
-        var getContent = document.getElementById("Comment").innerHTML;
-
         $(document).ready(function() {                    
             $('#CommentBtn').on('click', function () {
+                var getContent = document.getElementById("sendComment").value;
                 $.ajax({
                     url: '/Posts/AddComment',
                     settings: {
@@ -102,7 +101,7 @@
                         'Content': getContent
                     }
                 }).done(function () {
-                    alert('Load Partial View');
+                    alert('HUI');
                 });
             });
         });

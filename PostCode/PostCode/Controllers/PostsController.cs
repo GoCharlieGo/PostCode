@@ -140,16 +140,16 @@ namespace PostCode.Controllers
 
 
         [HttpPost]
-        public void AddComment(string PostId, string Content)
+        public void AddComment(string postId, string content)
         {
             if (ModelState.IsValid)
             {
                 Comment comment = new Comment();
                 comment.Id = Guid.NewGuid().ToString();
                 comment.UserId = User.Identity.GetUserId();
-                comment.Content = Content;
+                comment.Content = content;
                 comment.Data = DateTime.Now;
-                comment.PostId = PostId;
+                comment.PostId = postId;
 
                 _commentRepository.Add(comment);
                 _commentRepository.Save();

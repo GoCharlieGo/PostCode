@@ -63,3 +63,4 @@ D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csproj.GenerateResourc
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.dll
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.pdb
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._11111.resources
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csprojResolveAssemblyReference.cache
