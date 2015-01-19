@@ -9,6 +9,5 @@ namespace PostCode.Repository
 {
     public interface IUserRepository:IRepository<User>
     {
-        User GetById(String id);
     }
 }

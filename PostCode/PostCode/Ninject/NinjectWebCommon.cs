@@ -66,7 +66,7 @@ namespace PostCode.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<DbContext>().To<ApplicationDbContext>().InSingletonScope();
+            kernel.Bind<DbContext>().To<ApplicationDbContext>();
             kernel.Bind<IPostRepository>().To<PostRepository>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<ICommentRepository>().To<CommentRepository>();

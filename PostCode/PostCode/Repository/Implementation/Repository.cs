@@ -16,39 +16,44 @@ namespace PostCode.Repository
             _entities = сontext;
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual T GetById(string id)
+        {
+            return _entities.Set<T>().FirstOrDefault(x => x.Id == id);
+        }
+
+        public virtual IEnumerable<T> GetAll()
         {
             return _entities.Set<T>().AsEnumerable();
         }
 
-        public IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
+        public virtual IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
             IEnumerable<T> query = _entities.Set<T>().Where(predicate).AsEnumerable();
             return query;
         }
 
-        public T Add(T entity)
+        public virtual T Add(T entity)
         {
             return _entities.Set<T>().Add(entity);
         }
 
-        public T Delete(T entity)
+        public virtual void Delete(T entity)
         {
-            return _entities.Set<T>().Remove(entity);
+            _entities.Set<T>().Remove(entity);
         }
 
-        public void Edit(T entity)
+        public virtual void Edit(T entity)
         {
             var dbEntity = _entities.Set<T>().FirstOrDefault(e => e.Id == entity.Id);
             if (dbEntity != null) _entities.Entry((object) dbEntity).CurrentValues.SetValues(entity);
         }
 
-        public void Save()
+        public virtual void Save()
         {
             _entities.SaveChanges();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             _entities.Dispose();
         }

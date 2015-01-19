@@ -37,7 +37,7 @@ namespace PostCode.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<PostTag> PostTags { get; set; }
-        public DbSet<PostCode.Models.User> Users { get; set; }
+        //public DbSet<PostCode.Models.User> Users { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

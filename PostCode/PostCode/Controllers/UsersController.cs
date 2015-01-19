@@ -22,101 +22,14 @@ namespace PostCode.App_Start
             _userRepository = userRepository;
         }
         // GET: Users
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            return View(_userRepository.GetAll());
+            return View(_userRepository.GetAll().ToList());
         }
 
         // GET: Users/Details/5
-        public async Task<ActionResult> Details(string id)
+        public  ActionResult Details(string id)
         {
-            using (_userRepository)
-            {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                User user = _userRepository.GetById(id);
-                if (user == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(user);
-            }
-           
-        }
-
-        // GET: Users/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Email,UserName,LockoutEnabled")] User user)
-        {
-            using (_userRepository)
-            {
-                if (ModelState.IsValid)
-                {
-                    _userRepository.Add(user);
-                    _userRepository.Save();
-                    return RedirectToAction("Index");
-                }
-
-                return View(user);
-            }
-           
-        }
-
-        // GET: Users/Edit/5
-        public async Task<ActionResult> Edit(string id)
-        {
-            using (_userRepository)
-            {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                var user = _userRepository.GetById(id);
-                if (user == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(user);
-            }
-            
-        }
-
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,UserName,LockoutEnabled")] User user)
-        {
-            using (_userRepository)
-            {
-                if (ModelState.IsValid)
-                {
-                    _userRepository.Edit(user);
-                    _userRepository.Save();
-                    return RedirectToAction("Index");
-                }
-                return View(user);
-            }
-            
-        }
-
-        // GET: Users/Delete/5
-        public async Task<ActionResult> Delete(string id)
-        {
-            using (_userRepository)
-            {
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -127,8 +40,54 @@ namespace PostCode.App_Start
                     return HttpNotFound();
                 }
                 return View(user);  
-            }
-            
+        }
+
+        // GET: Users/Edit/5
+        public async Task<ActionResult> Edit(string id)
+        {
+
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                var user = _userRepository.GetById(id);
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(user);
+        }
+
+        // POST: Users/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(User user)
+        {
+
+                if (ModelState.IsValid)
+                {
+                    _userRepository.Edit(user);
+                    _userRepository.Save();
+                    return RedirectToAction("Index");
+                }
+                return View(user);
+        }
+
+        // GET: Users/Delete/5
+        public async Task<ActionResult> Delete(string id)
+        {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                User user = _userRepository.GetById(id);
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(user);  
         }
 
         // POST: Users/Delete/5
@@ -136,22 +95,18 @@ namespace PostCode.App_Start
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            using (_userRepository)
-            {
                 var user = _userRepository.GetById(id);
                 _userRepository.Delete(user);
                 _userRepository.Save();
                 return RedirectToAction("Index");
-            }
             
         }
-
         protected override void Dispose(bool disposing)
         {
-            //if (disposing)
-            //{
-            //    _userRepository.Dispose();
-            //}
+            if (disposing)
+            {
+                _userRepository.Dispose();
+            }
         }
     }
 }
