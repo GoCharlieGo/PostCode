@@ -17,12 +17,12 @@ namespace PostCode.Controllers
     {
         private readonly IPostRepository _postRepository;
         private readonly IUserRepository _userRepository;
-        private readonly ICommentRepository _commentRepository;
-        public PostsController(IPostRepository postRepository, IUserRepository userRepository,ICommentRepository commentRepository)
+        //private readonly ICommentRepository _commentRepository;
+        public PostsController(IPostRepository postRepository, IUserRepository userRepository)
         {
             _postRepository = postRepository;
             _userRepository = userRepository;
-            _commentRepository = commentRepository;
+            //_commentRepository = commentRepository;
         }
         // GET: Posts
         public async Task<ActionResult> Index()
@@ -138,28 +138,6 @@ namespace PostCode.Controllers
             return RedirectToAction("Index");
         }
 
-        //Get
-        public ActionResult AddComment(string idPost)
-        {
-            return View("Details");
-        }
-
-        [HttpPost]
-        public void AddComment(string PostId, string Content)
-        {
-            if (ModelState.IsValid)
-            {
-                Comment comment = new Comment();
-                comment.Id = Guid.NewGuid().ToString();
-                comment.UserId = User.Identity.GetUserId();
-                comment.Content = Content;
-                comment.Data = DateTime.Now;
-                comment.PostId = PostId;
-
-                _commentRepository.Add(comment);
-                _commentRepository.Save();
-            }
-        }
         protected override void Dispose(bool disposing)
         {
             //if (disposing)
