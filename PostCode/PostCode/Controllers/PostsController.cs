@@ -9,23 +9,17 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using PostCode.Models;
 using PostCode.Repository;
-using PostCode.Repository.Interface;
 
 namespace PostCode.Controllers
 {
     [ValidateInput(false)]
     public class PostsController : Controller
     {
-        private readonly ICommentLikeRepository _commentLikeRepository;
-        private readonly IPostRaitingRepository _postRaitingRepository;
         private readonly IPostRepository _postRepository;
         private readonly IUserRepository _userRepository;
         private readonly ICommentRepository _commentRepository;
-        public PostsController(IPostRepository postRepository, IUserRepository userRepository,
-            ICommentLikeRepository commentLikeRepository, IPostRaitingRepository postRaitingRepository,ICommentRepository commentRepository)
+        public PostsController(IPostRepository postRepository, IUserRepository userRepository,ICommentRepository commentRepository)
         {
-            _commentLikeRepository = commentLikeRepository;
-            _postRaitingRepository = postRaitingRepository;
             _postRepository = postRepository;
             _userRepository = userRepository;
             _commentRepository = commentRepository;
@@ -60,7 +54,7 @@ namespace PostCode.Controllers
                 Content = post.Content,
                 Data = post.Data,
                 Name = post.Name,
-                Comments = _commentRepository.GetAll().Select(com => new Comment()
+                Comments = _commentRepository.FindBy(x => x.PostId==post.Id).Select(com => new Comment()
                 {
                     Id = com.Id,
                     Content = com.Content,
@@ -84,20 +78,6 @@ namespace PostCode.Controllers
             return View();
         }
 
-        public void LikeComment(string commentId, int value)
-        {
-            if (ModelState.IsValid)
-            {
-                var commentLike = new CommentLike()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Value = value,
-                    Comment = _commentRepository.GetById(commentId),
-                    User = _userRepository.GetById(User.Identity.GetUserId())
-                };
-                _commentLikeRepository.Add(commentLike);
-            }
-        }
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]

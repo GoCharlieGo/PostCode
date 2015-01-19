@@ -4,8 +4,6 @@ using Ninject;
 using Ninject.Web.Common;
 using PostCode.Models;
 using PostCode.Repository;
-using PostCode.Repository.Implementation;
-using PostCode.Repository.Interface;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(PostCode.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(PostCode.App_Start.NinjectWebCommon), "Stop")]
@@ -72,10 +70,6 @@ namespace PostCode.App_Start
             kernel.Bind<IPostRepository>().To<PostRepository>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<ICommentRepository>().To<CommentRepository>();
-            kernel.Bind<ICommentLikeRepository>().To<CommentLikeRepository>();
-            kernel.Bind<IPostRaitingRepository>().To<PostRaitingRepository>();
-
-
         }        
     }
 }

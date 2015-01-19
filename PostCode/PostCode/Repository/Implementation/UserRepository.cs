@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 using PostCode.Models;
 
 namespace PostCode.Repository
 {
-    [Authorize]
     public class UserRepository:Repository<User>,IUserRepository
     {
         private readonly ApplicationDbContext _applicationDb;
@@ -17,6 +15,7 @@ namespace PostCode.Repository
         {
             _applicationDb = applicationDb;
         }
+
         public override IEnumerable<User> GetAll()
         {
             return _applicationDb.Users.ToList().Select(user => new User()

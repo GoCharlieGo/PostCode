@@ -17,14 +17,5 @@ namespace PostCode.Repository
         {
             return _entities.Set<Comment>().Include(x => x.Post).Include(x=> x.User).FirstOrDefault(x => x.Id == Id);
         }
-
-        public override Comment Add(Comment entity)
-        {
-            if (entity.Content == null || entity.UserId == null)
-                return null;
-            return _entities.Set<Comment>().Add(entity);
-
-
-        }
     }
 }

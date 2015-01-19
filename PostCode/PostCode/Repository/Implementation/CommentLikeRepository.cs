@@ -14,24 +14,9 @@ namespace PostCode.Repository.Implementation
         {
         }
 
-        public override CommentLike GetById(string Id)
+        public CommentLike GetById(string Id)
         {
-             return _entities.Set<CommentLike>().Include(x => x.Comment).Include(x => x.User).FirstOrDefault(x => x.Id == Id);
-        }
-
-        public int LikeCount(string id)
-        {
-            var comment = FindBy(x => x.Comment.Id == id);
-            return comment.Sum(item => item.Value);
-        }
-
-        public CommentLike Add(CommentLike entity, string userId)
-        {
-            if (!FindBy(x=>x.UserId == userId ).Any())
-            {
-                return _entities.Set<CommentLike>().Add(entity);
-            }
-            return null;
+            return _entities.Set<CommentLike>().Include(x => x.Comment).Include(x => x.User).FirstOrDefault(x => x.Id == Id);
         }
     }
 }
