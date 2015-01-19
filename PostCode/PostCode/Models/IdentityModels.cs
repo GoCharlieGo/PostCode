@@ -37,7 +37,14 @@ namespace PostCode.Models
         public DbSet<Comment> Comments { get; set; }
         public DbSet<CommentLike> CommentLikes { get; set; }
         public DbSet<PostTag> PostTags { get; set; }
-        public DbSet<PostCode.Models.User> Users { get; set; }
+
+        public override IDbSet<ApplicationUser> Users
+        {
+            get { return base.Users; }
+            set { base.Users = value; }
+        }
+
+        //public DbSet<User> Users { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -52,6 +59,7 @@ namespace PostCode.Models
         public String Email { get; set; }
         public String UserName { get; set; }
         public Boolean LockoutEnabled { get; set; }
+        public String Password { get; set; }
 
 
         public IEnumerable<Post> Posts { get; set; }

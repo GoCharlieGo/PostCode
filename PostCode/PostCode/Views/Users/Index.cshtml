@@ -7,9 +7,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -36,9 +33,9 @@
             @Html.DisplayFor(modelItem => item.LockoutEnabled)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "", null, new { href = "/Users/Edit?id=" + item.Id }) |
+            @Html.ActionLink("Details", "", null, new { href = "/Users/Details?id=" + item.Id }) |
+            @Html.ActionLink("Delete", "", null, new { href = "/Users/Delete?id=" + item.Id })
         </td>
     </tr>
 }

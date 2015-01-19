@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PostCode.Models;
+using PostCode.Repository;
 
 namespace PostCode.Controllers
 {
@@ -20,9 +21,10 @@ namespace PostCode.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
-        public AccountController()
+        private IUserRepository _userRepository;
+        public AccountController(IUserRepository userRepository)
         {
+            _userRepository = userRepository;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -84,20 +86,33 @@ namespace PostCode.Controllers
                     return View("Error");
                 }
             }
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            if (_userRepository.GetById(user.Id).LockoutEnabled == true)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Неудачная попытка входа.");
-                    return View(model);
+                var result =
+                    await
+                        SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe,
+                            shouldLockout: false);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, RememberMe = model.RememberMe});
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Неудачная попытка входа.");
+                        break;
+                }
+                return View(model);
             }
+            else
+            {
+                ViewBag.errorMessage = "Ваш аккаунт заблокирован.";
+                return View("Error");
+            }
+            
         }
 
         //

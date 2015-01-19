@@ -25,38 +25,46 @@ namespace PostCode.Controllers
         // GET: Posts
         public async Task<ActionResult> Index()
         {
-            var posts = _postRepository.GetAll().Select(post => new Post()
+            IEnumerable<Post> posts = null;
+            using (_postRepository)
             {
-                Id =post.Id,
-                Content = post.Content,
-                Code = post.Code,
-                Data = post.Data,
-                User = post.User,
-                Name = post.Name 
-            });
-            return View(posts);
+               posts = _postRepository.GetAll().Select(post => new Post()
+                {
+                    Id = post.Id,
+                    Content = post.Content,
+                    Code = post.Code,
+                    Data = post.Data,
+                    User = post.User,
+                    Name = post.Name
+                }).ToList();
+                return View(posts);
+            }
         }
 
         // GET: Posts/Details
         public async Task<ActionResult> Details(string id)
         {
-            if (id == null)
+            using (_postRepository)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                var post = _postRepository.GetById(id);
+
+                if (post == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(post);
             }
-            var post =_postRepository.GetById(id);
-            
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
         }
+
         [Authorize]
         // GET: Posts/Create
         public ActionResult Create()
         {
-            return View();
+                return View();
         }
 
         [HttpPost]
@@ -65,31 +73,34 @@ namespace PostCode.Controllers
         [ValidateInput(false)]
         public async Task<ActionResult> Create([Bind(Include = "Id,Content,Code,Data,Name,UserId")] Post post)
         {
-            if (ModelState.IsValid)
+            using (_postRepository)
             {
-                post.Id = Guid.NewGuid().ToString();
-                post.UserId = User.Identity.GetUserId();
-                post.Data = DateTime.Now;
-                _postRepository.Add(post);
-                _postRepository.Save();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    post.Id = Guid.NewGuid().ToString();
+                    post.UserId = User.Identity.GetUserId();
+                    post.Data = DateTime.Now;
+                    _postRepository.Add(post);
+                    _postRepository.Save();
+                    return RedirectToAction("Index");
+                }
+                return View(post); 
             }
-            return View(post);
         }
 
         // GET: Posts/Edit
         public async Task<ActionResult> Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post =_postRepository.GetById(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Post post = _postRepository.GetById(id);
+                if (post == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(post);
         }
 
         // POST: Posts/Edit
@@ -111,16 +122,16 @@ namespace PostCode.Controllers
         // GET: Posts/Delete/5
         public async Task<ActionResult> Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = _postRepository.GetById(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Post post = _postRepository.GetById(id);
+                if (post == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(post);
         }
 
         // POST: Posts/Delete
@@ -128,10 +139,10 @@ namespace PostCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            Post post = _postRepository.GetById(id);
-            _postRepository.Delete(post);
-            _postRepository.Save();
-            return RedirectToAction("Index");
+                Post post = _postRepository.GetById(id);
+                _postRepository.Delete(post);
+                _postRepository.Save();
+                return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
