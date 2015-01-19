@@ -1,5 +1,6 @@
 using System.Data.Entity;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject;
 using Ninject.Web.Common;
 using PostCode.Models;

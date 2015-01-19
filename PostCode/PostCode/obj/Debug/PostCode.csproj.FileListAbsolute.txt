@@ -64,3 +64,7 @@ D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._11111.reso
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.csproj.GenerateResource.Cache
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.dll
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.pdb
+D:\PostCode\PostCode\PostCode\PostCode\bin\ICSharpCode.SharpZipLib.dll
+D:\PostCode\PostCode\PostCode\PostCode\bin\Lucene.Net.dll
+D:\PostCode\PostCode\PostCode\PostCode\bin\Lucene.Net.pdb
+D:\PostCode\PostCode\PostCode\PostCode\bin\Lucene.Net.xml
