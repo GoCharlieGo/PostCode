@@ -15,7 +15,8 @@
             <input type='button' value='Delete' class="btn btn-default" />
         </a>
     </div>
-    <hr />
+    <hr/>
+    <div hidden="" id="PostId">@Model.Id</div>
     <div class="form-horizontal">
         <div class="form-group">
             <div class="col-md-1" style="padding-top: 1%">
@@ -55,11 +56,11 @@
 
         <div class="form-group">
             <div class="col-md-10 col-md-offset-1">
-                <textarea style="max-width: 100%; width: 100%; resize: none; border-color: #dddddd; border-radius: 4px; padding: 15px" wrap="soft" rows="5">Comment</textarea>
+                <textarea id="Comment"style="max-width: 100%; width: 100%; resize: none; border-color: #dddddd; border-radius: 4px; padding: 15px" wrap="soft" rows="5">Comment</textarea>
             </div>
         </div>
-            <a style="padding-left: 83%" href='@Url.Action("Index", "Comments", new {id = Model.Id})'>
-                <input type='button' value='Comment' class="btn btn-default" />
+            <a style="padding-left: 83%">
+                <input id="CommentBtn" type='button' value='Comment' class="btn btn-default" />
             </a>
             <hr />
             <a href='@Url.Action("Index", "Posts", new {id = Model.Id})'>
@@ -69,19 +70,41 @@
 </div>
 @section scripts{
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('pre code').each(function (i, e) {
+        $(document).ready(function() {
+            $('pre code').each(function(i, e) {
                 hljs.highlightBlock(e);
             });
         });
+
         $(document).ready(function() {
-            $("#Content").markdown({
+            $('#Content').markdown({
                 autofocus: false,
                 hiddenButtons: "",
                 initialstate: "preview",
                 fullscreen: false
             }).initialstate = "preview";
             $(".md-editor").attr("class", "");
+        });
+
+        var getPostId = document.getElementById("PostId").innerHTML;
+        var getContent = document.getElementById("Comment").innerHTML;
+
+        $(document).ready(function() {                    
+            $('#CommentBtn').on('click', function () {
+                $.ajax({
+                    url: '/Posts/AddComment',
+                    settings: {
+                        type: 'POST'
+                    },
+                    type: 'POST',
+                    data: {
+                        'PostId': getPostId,
+                        'Content': getContent
+                    }
+                }).done(function () {
+                    alert('HUI');
+                });
+            });
         });
     </script>
 }
