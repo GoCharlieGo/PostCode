@@ -54,7 +54,7 @@ namespace PostCode.Controllers
                 Content = post.Content,
                 Data = post.Data,
                 Name = post.Name,
-                Comments = _commentRepository.GetAll().Select(com => new Comment()
+                Comments = _commentRepository.FindBy(x => x.PostId==post.Id).Select(com => new Comment()
                 {
                     Id = com.Id,
                     Content = com.Content,

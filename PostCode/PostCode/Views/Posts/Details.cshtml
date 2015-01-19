@@ -8,19 +8,19 @@
 <div>
     <h2>@Html.DisplayFor(model => model.Name)</h2>
     <div class="col-md-3 col-lg-offset-9">
-        <a href='@Url.Action("Edit", "Posts", new { id = Model.Id })'>
-            <input type='button' value='Edit' class="btn btn-default" />
+        <a href='@Url.Action("Edit", "Posts", new {id = Model.Id})'>
+            <input type='button' value='Edit' class="btn btn-default"/>
         </a>
-        <a href='@Url.Action("Delete", "Posts", new { id = Model.Id })'>
-            <input type='button' value='Delete' class="btn btn-default" />
+        <a href='@Url.Action("Delete", "Posts", new {id = Model.Id})'>
+            <input type='button' value='Delete' class="btn btn-default"/>
         </a>
     </div>
-    <hr />
+    <hr/>
     <div hidden="" id="PostId">@Model.Id</div>
     <div class="form-horizontal">
         <div class="form-group">
             <div class="col-md-1" style="padding-top: 1%">
-                @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.LabelFor(model => model.Content, htmlAttributes: new {@class = "control-label col-md-1"})
             </div>
             <div class="col-md-10" style="padding-top: 1%">
                 <textarea name="Content" id="Content" style="max-width: 100%;">@Html.DisplayFor(model => model.Content)</textarea>
@@ -29,10 +29,10 @@
 
         <div class="form-group">
             <div class="col-md-1" style="padding-top: 3%">
-                @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.LabelFor(model => model.Code, htmlAttributes: new {@class = "control-label col-md-1"})
             </div>
             <div class="col-md-10" style="padding-top: 3%">
-<pre><code>@Html.DisplayFor(model => model.Code)</code></pre>
+                <pre><code>@Html.DisplayFor(model => model.Code)</code></pre>
             </div>
         </div>
 
@@ -48,27 +48,47 @@
         {
             <div class="form-group">
                 <div class="col-md-10 col-md-offset-1">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Commented by @item.User.Email<div class="col-md-push-9 glyphicon glyphicon-pencil"></div></div>
+                    <div class=" panel panel-default">
+                        <div class="panel-heading"> Commented by @item.User.Email
+                            <div type="button" data-toggle="modal" data-target="#myModal" class="col-md-push-9 glyphicon glyphicon-pencil" id="@item.Id" onclick=" EditComment(this.id) "></div>
+                        </div>
                         <div class="panel-body">@item.Content</div>
                     </div>
                 </div>
             </div>
+    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">@item.User.Email</div>
+                    <div class="modal-body">
+                        <textarea style="max-width: 100%; width: 100%; resize: none; border-color: #dddddd; border-radius: 4px; padding: 15px" wrap="soft" rows="5">@item.Content</textarea>
+                    </div>
+
+                <div class="modal-footer">                  
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
         }
         <div class="form-group">
             <div class="col-md-10 col-md-offset-1">
-                <textarea id="Comment" style="max-width: 100%; width: 100%; resize: none; border-color: #dddddd; border-radius: 4px; padding: 15px" wrap="soft" rows="5">Comment</textarea>
+                <textarea id="Comment" style="max-width: 100%; width: 100%; resize: none; border-color: #dddddd; border-radius: 4px; padding: 15px" wrap="soft" rows="5"></textarea>
             </div>
         </div>
         <a style="padding-left: 83%">
-            <input id="CommentBtn" type='button' value='Comment' class="btn btn-default" />
+            <input id="CommentBtn" type='button' value='Comment' class="btn btn-default"/>
         </a>
-        <hr />
+        <hr/>
         <a href='@Url.Action("Index", "Posts", new {id = Model.Id})'>
-            <input type='button' value='Back to List' class="btn btn-default" />
+            <input type='button' value='Back to List' class="btn btn-default"/>
         </a>
     </div>
 </div>
+
+
 @section scripts{
     <script type="text/javascript">
         $(document).ready(function () {
@@ -104,10 +124,12 @@
                         'PostId': getPostId,
                         'Content': getContent
                     }
-                }).done(function () {
-                    alert('HUI');
                 });
             });
         });
+
+        function EditComment(id) {
+            
+        }
     </script>
 }
