@@ -59,7 +59,6 @@ namespace PostCode.Models
         public String Email { get; set; }
         public String UserName { get; set; }
         public Boolean LockoutEnabled { get; set; }
-        public String Password { get; set; }
 
 
         public IEnumerable<Post> Posts { get; set; }

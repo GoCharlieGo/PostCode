@@ -66,3 +66,4 @@ D:\PostCode\PostCode\PostCode\PostCode\bin\Ninject.Web.Common.xml
 D:\PostCode\PostCode\PostCode\PostCode\bin\Ninject.Web.Mvc.xml
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._7.resources
 D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._3.resources
+D:\PostCode\PostCode\PostCode\PostCode\obj\Debug\PostCode.Migrations._4.resources

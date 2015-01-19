@@ -175,6 +175,10 @@
     <Compile Include="Migrations\201501182130472_3.Designer.cs">
       <DependentUpon>201501182130472_3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501190212498_4.cs" />
+    <Compile Include="Migrations\201501190212498_4.Designer.cs">
+      <DependentUpon>201501190212498_4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ninject\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -343,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501182130472_3.resx">
       <DependentUpon>201501182130472_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501190212498_4.resx">
+      <DependentUpon>201501190212498_4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
