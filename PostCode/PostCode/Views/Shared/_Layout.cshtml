@@ -26,6 +26,11 @@
                     <li>@if (User.Identity.IsAuthenticated == true)
                         {@Html.ActionLink("Create Post", "Create", "Posts")
                         }</li>
+                    <li>
+                        @if (User.IsInRole("admin"))
+                        {@Html.ActionLink("Admin", "Index", "Users")
+                        }
+                </li>
                 </ul>
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
