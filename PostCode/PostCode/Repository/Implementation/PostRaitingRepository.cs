@@ -8,7 +8,7 @@ using PostCode.Repository.Interface;
 
 namespace PostCode.Repository.Implementation
 {
-    public class PostRaitingRepository:Repository<PostRaiting>, IPosrRaitingRepository
+    public class PostRaitingRepository:Repository<PostRaiting>, IPostRaitingRepository
     {
         public PostRaitingRepository(DbContext сontext) : base(сontext)
         {

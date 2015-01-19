@@ -9,17 +9,23 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using PostCode.Models;
 using PostCode.Repository;
+using PostCode.Repository.Interface;
 
 namespace PostCode.Controllers
 {
     [ValidateInput(false)]
     public class PostsController : Controller
     {
+        private readonly ICommentLikeRepository _commentLikeRepository;
+        private readonly IPostRaitingRepository _postRaitingRepository;
         private readonly IPostRepository _postRepository;
         private readonly IUserRepository _userRepository;
         private readonly ICommentRepository _commentRepository;
-        public PostsController(IPostRepository postRepository, IUserRepository userRepository,ICommentRepository commentRepository)
+        public PostsController(IPostRepository postRepository, IUserRepository userRepository,
+            ICommentLikeRepository commentLikeRepository, IPostRaitingRepository postRaitingRepository,ICommentRepository commentRepository)
         {
+            _commentLikeRepository = commentLikeRepository;
+            _postRaitingRepository = postRaitingRepository;
             _postRepository = postRepository;
             _userRepository = userRepository;
             _commentRepository = commentRepository;
@@ -54,7 +60,7 @@ namespace PostCode.Controllers
                 Content = post.Content,
                 Data = post.Data,
                 Name = post.Name,
-                Comments = _commentRepository.FindBy(x => x.PostId==post.Id).Select(com => new Comment()
+                Comments = _commentRepository.FindBy(x=> x.PostId == post.Id).Select(com => new Comment()
                 {
                     Id = com.Id,
                     Content = com.Content,
@@ -78,6 +84,20 @@ namespace PostCode.Controllers
             return View();
         }
 
+        public void LikeComment(string commentId, int value)
+        {
+            if (ModelState.IsValid)
+            {
+                var commentLike = new CommentLike()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Value = value,
+                    Comment = _commentRepository.GetById(commentId),
+                    User = _userRepository.GetById(User.Identity.GetUserId())
+                };
+                _commentLikeRepository.Add(commentLike);
+            }
+        }
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -96,6 +116,7 @@ namespace PostCode.Controllers
             return View(post);
         }
 
+         [Authorize]
         // GET: Posts/Edit
         public async Task<ActionResult> Edit(string id)
         {
@@ -103,8 +124,9 @@ namespace PostCode.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+             
             Post post =_postRepository.GetById(id);
-            if (post == null)
+            if (post == null || (_userRepository.GetById(post.UserId).Id != User.Identity.GetUserId() && User.IsInRole("user")))
             {
                 return HttpNotFound();
             }
@@ -117,6 +139,7 @@ namespace PostCode.Controllers
         [ValidateInput(false)]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Content,Code,Data, Name, UserId")] Post post)
         {
+            if(post == null||(_userRepository.GetById(post.UserId).Id != User.Identity.GetUserId() && User.IsInRole("user"))) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             if (ModelState.IsValid)
             {
                 post.UserId = User.Identity.GetUserId();
@@ -136,7 +159,7 @@ namespace PostCode.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Post post = _postRepository.GetById(id);
-            if (post == null)
+            if (post == null || (_userRepository.GetById(post.UserId).Id != User.Identity.GetUserId() && User.IsInRole("user"))) return HttpNotFound();
             {
                 return HttpNotFound();
             }
@@ -154,7 +177,7 @@ namespace PostCode.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize]
         [HttpPost]
         public void AddComment(string postId, string content)
         {
@@ -174,10 +197,10 @@ namespace PostCode.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            //if (disposing)
-            //{
-            //    _postRepository.Dispose();
-            //}
+            if (disposing)
+            {
+                _postRepository.Dispose();
+            }
         }
     }
 }
