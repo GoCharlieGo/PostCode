@@ -1,6 +1,8 @@
 using System.Data.Entity;
+using System.Net;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 using Ninject;
 using Ninject.Web.Common;
 using PostCode.Models;
@@ -75,8 +77,11 @@ namespace PostCode.App_Start
             kernel.Bind<ICommentRepository>().To<CommentRepository>();
             kernel.Bind<ICommentLikeRepository>().To<CommentLikeRepository>();
             kernel.Bind<IPostRaitingRepository>().To<PostRaitingRepository>();
-
-
-        }        
+            kernel.Bind<IUserStore<ApplicationUser>>().To<UserStore<ApplicationUser>>();
+            kernel.Bind<UserManager<ApplicationUser>>().ToSelf();
+            kernel.Bind<ApplicationSignInManager>().ToSelf();
+            kernel.Bind<IAuthenticationManager>().ToMethod(am =>
+                HttpContext.Current.GetOwinContext().Authentication);
+        }    
     }
 }

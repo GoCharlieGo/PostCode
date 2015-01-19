@@ -55,6 +55,7 @@
                 </div>
             </div>
         }
+       <div id ="comment-content"> </div>
         <div class="form-group">
             <div class="col-md-10 col-md-offset-1">
                 <textarea id="Comment" style="max-width: 100%; width: 100%; resize: none; border-color: #dddddd; border-radius: 4px; padding: 15px" wrap="soft" rows="5">Comment</textarea>
@@ -87,13 +88,14 @@
             $(".md-editor").attr("class", "");
         });
 
-        var getPostId = document.getElementById("PostId").innerHTML;
+        
 
 
         $(document).ready(function () {
-
+            var getPostId = document.getElementById("PostId").innerHTML;
             $('#CommentBtn').on('click', function () {
                 var getContent = document.getElementById("Comment").value;
+
                 $.ajax({
                     url: '/Posts/AddComment',
                     settings: {
@@ -101,11 +103,11 @@
                     },
                     type: 'POST',
                     data: {
-                        'PostId': getPostId,
-                        'Content': getContent
+                        'postId': getPostId,
+                        'content': getContent
                     }
-                }).done(function () {
-                    alert('HUI');
+                }).done(function (data) {
+                    $('#comment-content').append(data);
                 });
             });
         });

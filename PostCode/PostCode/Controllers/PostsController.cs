@@ -159,7 +159,7 @@ namespace PostCode.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Post post = _postRepository.GetById(id);
-            if (post == null || (_userRepository.GetById(post.UserId).Id != User.Identity.GetUserId() && User.IsInRole("user"))) return HttpNotFound();
+            if (post == null || (_userRepository.GetById(post.UserId).Id != User.Identity.GetUserId() && User.IsInRole("user")))
             {
                 return HttpNotFound();
             }
@@ -172,6 +172,9 @@ namespace PostCode.Controllers
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
             Post post = _postRepository.GetById(id);
+            var comments = _commentRepository.FindBy(x => x.PostId == id);
+            foreach (var item in comments) _commentRepository.Delete(item);
+            _commentRepository.Save();
             _postRepository.Delete(post);
             _postRepository.Save();
             return RedirectToAction("Index");
@@ -179,20 +182,24 @@ namespace PostCode.Controllers
 
         [Authorize]
         [HttpPost]
-        public void AddComment(string postId, string content)
+        public ActionResult AddComment(string postId, string content)
         {
             if (ModelState.IsValid)
             {
-                Comment comment = new Comment();
-                comment.Id = Guid.NewGuid().ToString();
-                comment.UserId = User.Identity.GetUserId();
-                comment.Content = content;
-                comment.Data = DateTime.Now;
-                comment.PostId = postId;
-
+                Comment comment = new Comment
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Content = content,
+                    Data = DateTime.Now,
+                    Post = _postRepository.GetById(postId),
+                    User = _userRepository.GetById(User.Identity.GetUserId())
+                };
                 _commentRepository.Add(comment);
                 _commentRepository.Save();
+                return PartialView("CommentPartial",comment);
             }
+            return HttpNotFound();
+
         }
 
         protected override void Dispose(bool disposing)
