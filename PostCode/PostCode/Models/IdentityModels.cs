@@ -43,6 +43,8 @@ namespace PostCode.Models
             return new ApplicationDbContext();
         }
 
+        public System.Data.Entity.DbSet<PostCode.Models.User> Users1 { get; set; }
+
         
     }
     public class User : IEntity

@@ -155,6 +155,15 @@ namespace PostCode.Controllers
                 _commentRepository.Save();
             }
         }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult GetAllComments(string postId)
+        {
+            var comments = _commentRepository.FindBy(x => x.PostId == postId).ToList();
+            return PartialView();
+        }
+
         protected override void Dispose(bool disposing)
         {
             //if (disposing)
