@@ -204,7 +204,7 @@
     <Compile Include="Repository\Implementation\TagRepository.cs" />
     <Compile Include="Repository\Interface\ICommentLikeRepository.cs" />
     <Compile Include="Repository\Interface\ICommentRepository.cs" />
-    <Compile Include="Repository\Interface\IPosrRaitingRepository.cs" />
+    <Compile Include="Repository\Interface\IPostRaitingRepository.cs" />
     <Compile Include="Repository\Interface\IPostTagRepository.cs" />
     <Compile Include="Repository\Interface\IRepository.cs" />
     <Compile Include="Repository\Interface\ITagRepository.cs" />

@@ -8,7 +8,7 @@ using PostCode.Repository.Interface;
 
 namespace PostCode.Repository.Implementation
 {
-    public class PostRaitingRepository:Repository<PostRaiting>, IPosrRaitingRepository
+    public class PostRaitingRepository:Repository<PostRaiting>, IPostRaitingRepository
     {
         public PostRaitingRepository(DbContext сontext) : base(сontext)
         {
@@ -23,6 +23,14 @@ namespace PostCode.Repository.Implementation
         {
             var reaitPost = FindBy(x => x.PostId == Id).Average(x => x.Value);
             return reaitPost;
+        }
+
+        public override PostRaiting Add(PostRaiting entity)
+        {
+            if (GetById(entity.Id) == null)
+                return _entities.Set<PostRaiting>().Add(entity);
+            else return null;
+
         }
     }
 }

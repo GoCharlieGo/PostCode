@@ -24,7 +24,12 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Posts", "Index", "Posts")</li>
                     <li>@if (User.Identity.IsAuthenticated == true)
-                        {@Html.ActionLink("Create Post", "Create", "Posts")}</li>
+                        {@Html.ActionLink("Create Post", "Create", "Posts")
+                        }</li>
+                    <li>@if (User.IsInRole("admin"))
+                        {
+                            @Html.ActionLink("Admin panel", "Index", "Users")
+                        }</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -10,5 +10,6 @@ namespace PostCode.Repository.Interface
     public interface ICommentLikeRepository:IRepository<CommentLike>
     {
         CommentLike GetById(string Id);
+        int LikeCount(string id);
     }
 }
