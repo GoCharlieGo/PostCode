@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PostCode.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LockoutEnabled)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LockoutEnabled)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", null, new { href = "/Users/Edit?id=" + item.Id }) |
+            @Html.ActionLink("Details", "Details", null, new { href = "/Users/Details?id=" + item.Id }) |
+            @Html.ActionLink("Delete", "Delete", null, new { href = "/Users/Delete?id=" + item.Id })
+        </td>
+    </tr>
+}
+
+</table>
