@@ -177,6 +177,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Lucene\SearchByPost.cs" />
     <Compile Include="Migrations\201501181642111_1.cs" />
     <Compile Include="Migrations\201501181642111_1.Designer.cs">
@@ -308,6 +309,7 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Posts\CommentPartial.cshtml" />
+    <Content Include="Views\Posts\TagPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

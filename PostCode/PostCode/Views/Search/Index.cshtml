@@ -1,12 +1,5 @@
-﻿@model IEnumerable<PostCode.Models.Post>
-
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Index</h2>
-
+﻿@using PostCode.Models
+@model IEnumerable<Post>
 
 <table class="table">
     <tr>
@@ -17,18 +10,13 @@
             @Html.DisplayNameFor(model => model.Content)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Code)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Data)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
         <th></th>
-    </tr>
-
-@foreach (var item in Model) {
+    </tr>@{
+             var posts = (List<Post>) ViewData["PostAll"];
+         }
+@foreach (var item in posts) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.User.Email)
@@ -37,13 +25,7 @@
             @Html.DisplayFor(modelItem => item.Content)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Data)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
         </td>
     </tr>
 }

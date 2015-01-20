@@ -25,9 +25,9 @@ namespace PostCode.Repository.Implementation
             return reaitPost;
         }
 
-        public override PostRaiting Add(PostRaiting entity)
+        public  PostRaiting Add(PostRaiting entity, string userId)
         {
-            if (GetById(entity.Id) == null)
+            if (GetById(entity.Id) == null || FindBy(x=>x.UserId==userId || x.PostId == entity.Id).Any())
                 return _entities.Set<PostRaiting>().Add(entity);
             else return null;
 
